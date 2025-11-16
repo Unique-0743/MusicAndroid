@@ -1,4 +1,4 @@
-# UniqueMusic
+# UniqueMusic Version 1.0
 
 UniqueMusic is a cross-platform **React Native + Expo** powered music player app designed to deliver a seamless audio playback experience on **Android, Web, and PC (via APK emulators)**.
 
