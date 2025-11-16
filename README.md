@@ -1,50 +1,129 @@
-# Welcome to your Expo app 👋
+# UniqueMusic
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+UniqueMusic is a cross-platform **React Native + Expo** powered music player app designed to deliver a seamless audio playback experience on **Android, Web, and PC (via APK emulators)**.
 
-## Get started
+This project uses:
 
-1. Install dependencies
+* **Expo Router** for navigation
+* **EAS Build** for production APK
+* **Google Authentication**
+* **Custom Backend (Vercel)** for streaming songs & thumbnails
+* **Advanced Music Player UI** using `react-native-reanimated`, `gesture-handler`, and custom components
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## 🚀 Features
 
-   ```bash
-   npx expo start
-   ```
+### 🎵 Music Streaming
 
-In the output, you'll find options to open the app in a
+* Fetches songs & thumbnails from your custom backend
+* Smooth playback using `expo-av`
+* Handles large music folders efficiently
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 🔊 Modern Music Player (MusicPlayer.js)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+* Fully custom-designed player screen
+* Capsule-shaped seek bar
+* Bullet-style movable progress thumb
+* Gesture-based bottom-sheet style controls
+* Optimized for Android & Web
 
-## Get a fresh project
+### 🖼️ UI/UX
 
-When you're ready, run:
+* Edge-to-edge Android design
+* Custom adaptive icons
+* Dark/light mode support
+* Smooth transitions with the new React Compiler enabled
 
-```bash
-npm run reset-project
+### 🔐 Authentication
+
+* Google OAuth login integrated via Expo
+
+### 🌐 Backend
+
+* Hosted on Vercel
+* Songs streamed via `/api/music` endpoint
+* CORS configured for Expo web
+
+### 📦 Packaging
+
+* Supports **EAS Production Builds** for Android
+* Generates both `.apk` and `.aab`
+
+---
+
+## 📁 Project Structure
+
+```
+MusicAndroid/
+│
+├── app/
+│   ├── index.js
+│   ├── MusicPlayer.js      # ⬅️ replaced PlayerScreen.js
+│   ├── MusicListScreen.js
+│
+├── components/
+│   ├── PlayerControls.js
+│   ├── SliderBar.js
+│
+├── assets/
+│   ├── icon.png            # 1024×1024 Expo icon
+│   ├── splash.png
+│
+├── server/                 # standalone backend (Vercel)
+│
+├── eas.json
+├── app.json
+├── package.json
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## ⚙️ Setup
 
-To learn more about developing your project with Expo, look at the following resources:
+### 1️⃣ Install dependencies
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```sh
+yarn install
+```
 
-## Join the community
+### 2️⃣ Start development
 
-Join our community of developers creating universal apps.
+```sh
+yarn start
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### 3️⃣ Android build (APK/AAB)
+
+```sh
+eas build --platform android --profile production
+```
+
+---
+
+## 🛠️ Build Requirements
+
+* Expo icons: **1024×1024 PNG**, no transparency
+* Adaptive icon: same PNG + background color
+* Ensure `slug` and `projectId` follow Expo guidelines
+
+---
+
+## 🌍 Deployment
+
+### Backend (Vercel)
+
+* Place all songs in cloud storage
+* Index with `/api/music` using folderId
+* Supports streaming + metadata
+
+---
+
+## 💡 Notes
+
+* `PlayerScreen.js` has been replaced with **`MusicPlayer.js`** everywhere in the app
+* Expo Router uses typed routes (experimental)
+* `newArchEnabled: true` enabled for performance
+
+---
+
